@@ -1,0 +1,985 @@
+/* =========================================================
+   CONSOLIDATED STYLESHEET
+   This resolves 3 overlapping theme revisions down to one.
+   For every selector that was redefined more than once, the
+   value below is the one that was ACTUALLY winning in your
+   original file (last-write-wins per property) — not just a
+   guess. Flags for things that look like leftover bugs are
+   marked with /* FLAG */ /* comments near the bottom.
+   ========================================================= */
+
+@font-face {
+  font-family: 'Quicksand Bold';
+  src: url('https://frogiee.one/stuff/fonts/Quicksand/static/Quicksand-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Quicksand SemiBold';
+  src: url('https://frogiee.one/stuff/fonts/Quicksand/static/Quicksand-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Quicksand Medium';
+  src: url('https://frogiee.one/stuff/fonts/Quicksand/static/Quicksand-Medium.ttf');
+}
+
+:root {
+  --cyan-normal: #ffffff;
+  --white: #ffffff;
+  --moon: #262626;
+  --light-gray: rgba(255, 255, 255, 0.18);
+  --gray: #d4d4d4;
+  --black: #000000;
+  --dark-gray: #5E5E5E;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  margin: 0;
+  height: 100vh;
+  color: rgba(255, 255, 255, 0.78);
+  overflow: hidden;
+  user-select: none;
+  background: #071018;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 0;
+}
+
+a {
+  color: #ffffff;
+  transition: ease 0.2s;
+  text-underline-offset: 10000px;
+  font-weight: 700;
+}
+a:hover {
+  color: #bdbdbd;
+  transition: ease 0.2s;
+}
+
+button {
+  background-color: #1a1a1a00;
+  height: 50px;
+  outline: none;
+  border: solid 2px #3b3b3b;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.2em;
+  border-radius: 4px;
+  transition: all ease-in-out .15s;
+  cursor: pointer;
+  margin: 10px;
+}
+button:hover {
+  background-color: #ffffff;
+  border: solid 2px #ffffff;
+  color: #000000;
+  box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+}
+button:active {
+  scale: 0.8;
+}
+button:disabled {
+  cursor: url(/stuff/icons/pointer.png), pointer !important;
+  background-color: #0e0e0e;
+  border: solid 5px #292929;
+  scale: 1;
+  box-shadow: 0 0 0px #000;
+}
+
+#back {
+  position: absolute;
+  top: 0;
+  color: #ffffff;
+  transition: ease 0.2s;
+  font-weight: 700;
+}
+#back:hover {
+  color: #bdbdbd;
+  transition: ease 0.2s;
+  cursor: pointer;
+}
+
+#vanta {
+  transition: all ease-out 0.4s;
+  width: 100vw;
+  height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(93, 126, 139, 0.3), transparent 42%),
+    radial-gradient(ellipse at 14% 78%, rgba(26, 69, 82, 0.28), transparent 34%),
+    linear-gradient(125deg, #102631 0%, #05090c 48%, #17242b 100%);
+}
+
+#lowtaperfade {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(100, 133, 143, 0.16), rgba(1, 5, 8, 0.68));
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  left: 0;
+  position: fixed;
+  top: 0px;
+  z-index: 2;
+  opacity: 0.62;
+}
+
+#evenbiggerfadethanlowtaperfade {
+  transition: all ease-in-out 1.5s;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.9));
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  left: 0;
+  position: fixed;
+  top: 0px;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- Main card box ---------- */
+
+#roddyricchesbox {
+  transition: all ease-in-out 1.5s;
+  position: absolute;
+  z-index: 9997;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  width: min(474px, calc(100vw - 32px));
+  height: min(430px, calc(100vh - 48px)) !important;
+  min-height: 0 !important;
+  max-height: none;
+  padding: 0 20px 20px;
+  box-sizing: border-box;
+  color: white;
+  overflow: auto;
+  scrollbar-width: thin;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(7, 12, 15, 0.56);
+  border: 1px solid rgba(214, 231, 235, 0.16);
+  border-radius: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+#topleft,
+#topright,
+#bottomleft,
+#bottomright {
+  position: relative;
+  inset: auto;
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 9px;
+  border: 1px solid rgba(214, 231, 235, 0.14);
+  background: rgba(5, 10, 13, 0.26);
+}
+
+#topleft {
+  border-top: 0;
+  padding-top: 20px;
+  gap: 9px;
+}
+
+#bottomleft {
+  gap: 12px;
+}
+
+#bottomright {
+  gap: 12px;
+}
+
+#topleft h1,
+#topright h1,
+#bottomleft h1,
+#bottomright h1 {
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: 0;
+  font-size: 0.76rem;
+  font-weight: 400;
+  text-transform: lowercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+#bottomleft h1,
+#bottomright h1 {
+  margin: 0 0 10px;
+}
+
+#bottomleft,
+#bottomright {
+  display: block !important;
+  text-align: left;
+}
+
+.hidden-panel {
+  display: flex !important;
+}
+
+#profile-pic {
+  width: 86px;
+  height: 86px;
+  border-radius: 0;
+  display: block;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+#bio-text {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.72rem;
+  text-align: center;
+  line-height: 1.4;
+  max-width: 340px;
+}
+
+/* FLAG: width:150px is left over from an older version and no longer
+   matches the 28px-tall pill style below — probably worth removing
+   or replacing with e.g. width:auto. Kept as-is since I wasn't sure
+   which you want. */
+#bottomleft button {
+  width: 150px;
+}
+
+#bottomleft button,
+.social-links a {
+  height: 28px;
+  min-height: 28px;
+  margin: 0 5px 5px 0;
+  padding: 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.65rem;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  max-width: none;
+  margin: 0;
+}
+
+.social-links a {
+  display: inline-grid;
+  place-items: center;
+  text-decoration: none;
+}
+.social-links a:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* ---------- Floating "now playing" card (top-right) ---------- */
+
+#topright {
+  position: fixed;
+  z-index: 9997;
+  right: 32px;
+  bottom: 18px;
+  width: 202px;
+  min-height: 190px;
+  padding: 10px;
+  gap: 7px;
+  background: rgba(8, 12, 14, 0.78);
+  border-color: rgba(214, 231, 235, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+#topright h1 {
+  display: none;
+}
+
+#albumcover {
+  width: 72px;
+  height: 72px;
+  border-radius: 0;
+}
+
+#songtitle,
+#songartist {
+  margin: 0;
+  max-width: 100%;
+  text-align: center;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+#songtitle {
+  font-size: 0.72rem;
+  font-weight: 400;
+}
+#songartist {
+  font-size: 0.62rem;
+  opacity: 0.8;
+}
+
+/* ---------- Music bar (transparent control overlay on #topright) ---------- */
+
+#thethingabovethemusicbar {
+  /* FLAG: this is still centered at bottom:68px / left:50%, which
+     matched the old full-width bottom bar. Now that #musicbar lives
+     at bottom-right (202px wide), this element is likely floating
+     in the wrong spot — probably needs repositioning or removal. */
+  transition: all ease-in-out 1.5s;
+  position: absolute;
+  bottom: 68px;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  width: 40px;
+  height: 20px;
+  background-color: #1a1a1a6e;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  cursor: pointer;
+}
+
+#musicbar {
+  transition: all ease-in-out 1.5s;
+  position: absolute;
+  right: 32px;
+  left: auto;
+  bottom: 18px;
+  width: 202px;
+  height: 48px;
+  background: transparent;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: none;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 0;
+  pointer-events: none;
+}
+
+.controls {
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+}
+.controls button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.02);
+  font-size: 20px;
+  line-height: 1;
+  font-family: "Segoe UI Symbol", "Apple Symbols", "Noto Sans Symbols 2", "DejaVu Sans", sans-serif;
+  cursor: pointer;
+  opacity: 0.85;
+  padding: 0;
+}
+.controls button svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+.controls button:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: none;
+}
+.controls .play {
+  width: 48px;
+  height: 48px;
+}
+.controls .play svg {
+  width: 20px;
+  height: 20px;
+}
+
+#musicbar .controls {
+  gap: 4px;
+  pointer-events: auto;
+}
+#musicbar .controls button {
+  width: 28px;
+  height: 28px;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.04);
+}
+#musicbar .controls .play {
+  width: 32px;
+  height: 32px;
+}
+
+#progress-container {
+  position: fixed;
+  top: auto;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  right: 20px;
+  width: calc(100% - 16px);
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  pointer-events: auto;
+}
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ffffff 0%, #bdbdbd 50%, #ffffff 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+}
+
+/* ---------- Music menu / track list ---------- */
+
+#musicmenu {
+  transition: all ease-in-out .9s;
+  position: absolute;
+  z-index: 9997;
+  text-align: center;
+  top: 150%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  width: 400px;
+  height: 560px;
+  border-radius: 0;
+  color: white;
+  padding: 30px;
+  line-height: 1.8;
+  overflow: clip;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  background-color: rgba(2, 2, 2, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+#thetop {
+  width: 400px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  height: 88px;
+  box-sizing: border-box;
+  padding-top: 10px;
+}
+#thetop h2 {
+  margin: 0;
+}
+
+#thebottom {
+  width: 400px;
+  position: absolute;
+  top: 98px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  overflow: auto;
+  height: 450px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 100px;
+}
+::-webkit-scrollbar-track {
+  background: var(--light-gray);
+  backdrop-filter: blur(20px);
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cyan-normal);
+  border-radius: 20px;
+  outline: 1px solid var(--black);
+}
+
+.track {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  gap: 14px;
+  padding: 10px;
+  border-radius: 0;
+  align-items: center;
+  cursor: pointer;
+  min-width: 0;
+}
+.track:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.track img {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+}
+.track-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.track-info .title {
+  font-weight: 600;
+}
+.track-info .artist {
+  font-size: 15px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.album {
+  font-size: 12px;
+  opacity: 0.6;
+  text-align: right;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  min-width: 58px;
+  max-width: 110px;
+  justify-self: end;
+}
+
+.pagestuffs {
+  opacity: 0;
+}
+
+/* ---------- Misc overlays (info panel / reader / title) ---------- */
+
+.info {
+  transition: all ease-in-out 1.5s;
+  position: fixed;
+  z-index: 9997;
+  text-align: center;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
+  color: white;
+  padding: 0;
+  line-height: 1.8;
+  overflow: clip;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  background-color: #1a1a1a6e;
+  backdrop-filter: blur(20px);
+}
+
+.butheresthereader {
+  transition: all ease-in-out 1.5s;
+  position: fixed;
+  z-index: 9997;
+  text-align: center;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  padding: 0;
+  line-height: 1.8;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.title {
+  transition: all ease-in-out 1.5s;
+  position: fixed;
+  z-index: 9997;
+  text-align: center;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  color: white;
+  padding: 0;
+  line-height: 1.8;
+  overflow: clip;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.content {
+  top: -70%;
+  transform: translate(0, -55%);
+  position: sticky;
+}
+
+.iconlinks {
+  width: 35px;
+  height: 35px;
+  transition: ease .2s;
+}
+.iconlinks:hover {
+  cursor: pointer;
+  scale: 1.2;
+}
+
+/* ---------- Boot / enter overlay ---------- */
+
+.enter-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.96);
+  backdrop-filter: blur(20px);
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+.boot-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  color: #ffffff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  min-width: 300px;
+}
+
+.boot-lines {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  min-height: 120px;
+  opacity: 0.9;
+  transition: all 0.45s ease;
+}
+.boot-lines > div {
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translateY(4px);
+}
+.boot-lines > div.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.boot-welcome {
+  margin-top: 10px;
+  font-size: 22px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.35s ease;
+}
+
+.boot-panel.ready .boot-lines {
+  min-height: 0;
+}
+.boot-panel.ready .boot-lines > div:not(.boot-welcome) {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.boot-panel.ready .boot-welcome {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.enter-button {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  font-size: 24px;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.boot-panel.ready .enter-button {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.enter-button:hover {
+  text-shadow: 0 0 10px #ffffff;
+}
+
+#canvas {
+  display: none;
+}
+
+/* =========================================================
+   RESPONSIVE
+   Your original file had TWO conflicting sets of mobile rules:
+   one that switched #roddyricchesbox back to a 2x2 grid layout
+   (leftover from an earlier version), and one that just resized
+   the final flex-column design. Since the desktop design is now
+   flex-based, I dropped the old grid-based mobile rules (they
+   would have made the layout flip to a different structure on
+   small screens than on desktop) and kept only the rules that
+   match the final design.
+   ========================================================= */
+
+@media (max-width: 760px) {
+  #roddyricchesbox {
+    top: 48%;
+    left: 50%;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    height: min(430px, calc(100vh - 32px)) !important;
+    min-height: 0 !important;
+    max-height: none;
+    padding: 0 12px 12px;
+  }
+
+  #topright,
+  #musicbar {
+    right: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  #topright {
+    bottom: 8px;
+    width: 174px;
+    min-height: 172px;
+  }
+
+  #musicbar {
+    bottom: 8px;
+    width: 174px;
+  }
+}
+
+/* Keep playback controls inside the now-playing card. */
+#topright #musicbar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  box-sizing: border-box;
+  padding: 0 14px;
+  background: rgba(225, 238, 240, 0.025);
+  border-top: 1px solid rgba(193, 218, 224, 0.12);
+  pointer-events: auto;
+}
+
+#topright #musicbar .controls {
+  margin: 0 auto;
+}
+
+#topright #progress-container {
+  position: absolute;
+  right: 14px;
+  bottom: 5px;
+  left: 14px;
+  width: auto;
+  transform: none;
+}
+
+/* Final profile and player composition. */
+#roddyricchesbox {
+  top: 50%;
+  left: 50%;
+  width: min(474px, calc(100vw - 32px));
+  height: auto !important;
+  max-height: calc(100vh - 48px);
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  gap: 10px;
+  overflow: auto;
+  background: rgba(6, 13, 16, 0.78);
+  border: 1px solid rgba(193, 218, 224, 0.2);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.52);
+}
+
+#topleft,
+#bottomleft,
+#bottomright {
+  width: 100%;
+  min-height: 0;
+  height: auto;
+  padding: 14px 12px;
+  border: 1px solid rgba(193, 218, 224, 0.15);
+  background: rgba(4, 10, 13, 0.68);
+}
+
+#topleft {
+  padding: 18px 18px 16px;
+  gap: 10px;
+}
+
+#topleft h1,
+#bottomleft h1,
+#bottomright h1 {
+  color: rgba(225, 238, 240, 0.78);
+  font-size: 0.78rem;
+}
+
+#profile-pic {
+  width: 92px;
+  height: 92px;
+  border: 1px solid rgba(225, 238, 240, 0.28);
+}
+
+#bio-text {
+  max-width: 340px;
+  font-size: 0.73rem;
+  line-height: 1.55;
+  color: rgba(225, 238, 240, 0.68);
+}
+
+#bottomleft,
+#bottomright {
+  display: block !important;
+  text-align: left;
+}
+
+#bottomleft h1,
+#bottomright h1 {
+  margin-bottom: 10px;
+}
+
+#bottomleft button {
+  width: auto;
+  min-width: 136px;
+  margin: 0;
+}
+
+#bottomleft button,
+.social-links a {
+  height: 30px;
+  min-height: 30px;
+  border-color: rgba(193, 218, 224, 0.22);
+  background: rgba(193, 218, 224, 0.06);
+  color: rgba(225, 238, 240, 0.78);
+}
+
+#topright {
+  right: 32px;
+  bottom: 18px;
+  width: 236px;
+  min-height: 218px;
+  padding: 14px 14px 62px;
+  gap: 8px;
+  background: rgba(8, 15, 18, 0.92);
+  border: 1px solid rgba(193, 218, 224, 0.2);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.48);
+}
+
+#albumcover {
+  width: 96px;
+  height: 96px;
+  border: 1px solid rgba(225, 238, 240, 0.2);
+}
+
+#songtitle {
+  color: rgba(245, 250, 250, 0.9);
+  font-size: 0.8rem;
+}
+
+#songartist {
+  color: rgba(225, 238, 240, 0.62);
+  font-size: 0.66rem;
+}
+
+#musicbar {
+  right: 32px;
+  bottom: 18px;
+  width: 236px;
+  height: 54px;
+  padding: 0 14px;
+  background: transparent;
+}
+
+#musicbar .controls {
+  gap: 10px;
+}
+
+#musicbar .controls button {
+  width: 31px;
+  height: 31px;
+  border: 1px solid rgba(225, 238, 240, 0.22);
+  background: rgba(225, 238, 240, 0.07);
+}
+
+#musicbar .controls .play {
+  width: 36px;
+  height: 36px;
+  background: rgba(225, 238, 240, 0.14);
+}
+
+#progress-container {
+  bottom: 4px;
+  width: calc(100% - 28px);
+  height: 3px;
+  background: rgba(225, 238, 240, 0.16);
+}
+
+@media (max-width: 760px) {
+  #roddyricchesbox {
+    top: 48%;
+    width: min(474px, calc(100vw - 24px));
+    max-height: calc(100vh - 32px);
+  }
+
+  #topright,
+  #musicbar {
+    right: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  #topright,
+  #musicbar {
+    width: 188px;
+  }
+
+  #topright {
+    min-height: 192px;
+    padding-bottom: 56px;
+  }
+
+  #albumcover {
+    width: 76px;
+    height: 76px;
+  }
+}
