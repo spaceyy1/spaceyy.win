@@ -1,4 +1,4 @@
-// this code gets an award for being the best code EVER. /j
+// this code should be PRAISED with how good it is
 function musicmenu() {
     const musicmenu = document.getElementById('musicmenu')
     const arrowthing = document.getElementById('toggleicon')
