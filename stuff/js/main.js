@@ -1,3 +1,4 @@
+// if your gonna skid this, plz credit me - spaceyy1 (aka. frost)
 let titleText = "frost.one";
 let opacity = 0;
 let fadeIn = true;
